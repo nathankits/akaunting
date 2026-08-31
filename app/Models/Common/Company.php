@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Laratrust\Contracts\Ownable;
+use App\Interfaces\Ownable;
 use Lorisleiva\LaravelSearchString\Concerns\SearchString;
 
 class Company extends Eloquent implements Ownable
