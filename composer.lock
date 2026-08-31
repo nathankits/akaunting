@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37562c2435075486c2efc2b412fb745f",
+    "content-hash": "d5e476da57d8c70e9a33393c07a98f5e",
     "packages": [
         {
             "name": "akaunting/laravel-apexcharts",
@@ -209,43 +209,36 @@
         },
         {
             "name": "akaunting/laravel-language",
-            "version": "1.0.22",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/akaunting/laravel-language.git",
-                "reference": "83285fb4ad450b406f2df8570090828e4326ee1a"
-            },
+            "version": "99.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/akaunting/laravel-language/zipball/83285fb4ad450b406f2df8570090828e4326ee1a",
-                "reference": "83285fb4ad450b406f2df8570090828e4326ee1a",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/laravel-language",
+                "reference": "b24a3159254c7bc557ca55a9b10ae015a8b4e481"
             },
             "require": {
-                "jenssegers/agent": "2.6.*",
-                "laravel/framework": ">=5.4.0",
-                "php": ">=5.6.4"
+                "jenssegers/agent": "^2.6",
+                "laravel/framework": "^10.0|^11.0|^12.0|^13.0",
+                "php": "^8.2"
             },
             "type": "library",
             "extra": {
                 "laravel": {
-                    "aliases": {
-                        "Language": "Akaunting\\Language\\Facade"
-                    },
                     "providers": [
                         "Akaunting\\Language\\Provider"
-                    ]
+                    ],
+                    "aliases": {
+                        "Language": "Akaunting\\Language\\Facade"
+                    }
                 }
             },
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Akaunting\\Language\\": "./src"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -263,11 +256,10 @@
                 "laravel",
                 "switcher"
             ],
-            "support": {
-                "issues": "https://github.com/akaunting/laravel-language/issues",
-                "source": "https://github.com/akaunting/laravel-language/tree/1.0.22"
-            },
-            "time": "2022-08-05T07:33:12+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "akaunting/laravel-menu",

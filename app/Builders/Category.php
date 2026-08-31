@@ -56,13 +56,16 @@ class Category extends Builder
      *
      * @throws \InvalidArgumentException
      */
-    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null, $total = null)
     {
         $page = $page ?: Paginator::resolveCurrentPage($pageName);
 
         $perPage = $perPage ?: $this->model->getPerPage();
 
-        $results = ($total = $this->toBase()->getCountForPagination())
+        // Laravel 13 added the $total argument to Builder::paginate().
+        $total = value($total) ?? $this->toBase()->getCountForPagination();
+
+        $results = $total
         ? $this->forPage($page, $perPage)->getWithoutChildren($columns)
         : $this->model->newCollection();
 

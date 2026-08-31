@@ -58,6 +58,12 @@ class Overrider
         if (! session('locale')) {
             $locale = user()->locale ?? setting('default.locale');
 
+            // Carbon 3 (Laravel 13) types setLocale() as string, and setting()
+            // returns false when no company context exists yet (e.g. login).
+            if (! is_string($locale) || $locale === '') {
+                $locale = config('app.locale');
+            }
+
             app()->setLocale($locale);
         }
 

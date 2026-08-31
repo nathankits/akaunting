@@ -148,21 +148,29 @@ trait ManagesStacks
      */
     public function yieldPushContent($section, $default = '')
     {
-        if (! isset($this->pushes[$section]) && ! isset($this->prepends[$section])) {
+        if ($this->isStackEmpty($section)) {
             return $default;
         }
 
         $output = '';
 
         if (isset($this->prepends[$section])) {
-            $output .= implode(array_reverse($this->prepends[$section]));
+            $output .= implode('', array_reverse($this->prepends[$section]));
         }
 
         if (isset($this->pushes[$section])) {
-            $output .= implode($this->pushes[$section]);
+            $output .= implode('', $this->pushes[$section]);
         }
 
         return $output;
+    }
+
+    /**
+     * Determine if the stack has any content in it.
+     */
+    public function isStackEmpty(string $section): bool
+    {
+        return ! isset($this->pushes[$section]) && ! isset($this->prepends[$section]);
     }
 
     /**
@@ -176,22 +184,23 @@ trait ManagesStacks
         $this->prepends = [];
         $this->pushStack = [];
     }
-
     /**
      * Flush stack by key.
      *
-     * @return void
+     * \@override akaunting: allows a single stack to be cleared by name.
+     *
+     * \@return void
      */
     public function flushStack($key = null)
-    {   
+    {
         $properties = [
-            'pushes',
-            'prepends',
-            'pushStack',
+            "pushes",
+            "prepends",
+            "pushStack",
         ];
 
         foreach ($properties as $property) {
-            if (!array_key_exists($key, $this->$property)) {
+            if (! array_key_exists($key, $this->$property)) {
                 continue;
             }
 

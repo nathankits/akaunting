@@ -16,13 +16,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laratrust\Traits\LaratrustUserTrait;
+use Laratrust\Traits\HasLaratrustScopes;
+use Laratrust\Traits\HasRolesAndPermissions;
 use Lorisleiva\LaravelSearchString\Concerns\SearchString;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class User extends Authenticatable implements HasLocalePreference
 {
-    use HasApiTokens, HasFactory, HasRelationships, LaratrustUserTrait, Media, Notifiable, Owners, SearchString, SoftDeletes, Sortable, Sources, Tenants, Users;
+    use HasApiTokens, HasFactory, HasRelationships, HasLaratrustScopes, HasRolesAndPermissions, Media, Notifiable, Owners, SearchString, SoftDeletes, Sortable, Sources, Tenants, Users;
 
     protected $table = 'users';
 
@@ -228,7 +229,7 @@ class User extends Authenticatable implements HasLocalePreference
      */
     public function scopeIsCustomer($query)
     {
-        return $query->wherePermissionIs('read-client-portal');
+        return $query->whereHasPermission('read-client-portal');
     }
 
     /**
@@ -239,7 +240,7 @@ class User extends Authenticatable implements HasLocalePreference
      */
     public function scopeIsNotCustomer($query)
     {
-        return $query->wherePermissionIs('read-admin-panel');
+        return $query->whereHasPermission('read-admin-panel');
     }
 
     /**
@@ -261,7 +262,7 @@ class User extends Authenticatable implements HasLocalePreference
      */
     public function scopeIsNotEmployee($query)
     {
-        return $query->wherePermissionIs('read-admin-panel');
+        return $query->whereHasPermission('read-admin-panel');
     }
 
     public function scopeEmail($query, $email)

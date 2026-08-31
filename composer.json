@@ -30,7 +30,7 @@
         "akaunting/laravel-apexcharts": "^4.0",
         "akaunting/laravel-debugbar-collector": "^2.1",
         "akaunting/laravel-firewall": "^3.0",
-        "akaunting/laravel-language": "^1.0",
+        "akaunting/laravel-language": "*",
         "akaunting/laravel-menu": "*",
         "akaunting/laravel-module": "^4.0",
         "akaunting/laravel-money": "^6.0",
@@ -109,7 +109,6 @@
             "Illuminate\\Translation\\": "overrides/Illuminate/Translation/",
             "Illuminate\\View\\Concerns\\": "overrides/Illuminate/View/Concerns/",
             "Livewire\\": "overrides/livewire/livewire/",
-            "Maatwebsite\\Excel\\": "overrides/maatwebsite/excel/",
             "Modules\\": "modules/",
             "Symfony\\Component\\Process\\": "overrides/symfony/process/"
         },
@@ -121,8 +120,6 @@
             "vendor/laravel/framework/src/Illuminate/Translation/MessageSelector.php",
             "vendor/laravel/framework/src/Illuminate/View/Concerns/ManagesStacks.php",
             "vendor/livewire/livewire/src/Mechanisms/HandleRequests/HandleRequests.php",
-            "vendor/maatwebsite/excel/src/Fakes/ExcelFake.php",
-            "vendor/maatwebsite/excel/src/QueuedWriter.php",
             "vendor/symfony/process/PhpExecutableFinder.php"
         ],
         "files": [
@@ -164,6 +161,13 @@
         ]
     },
     "repositories": [
+        {
+            "type": "path",
+            "url": "packages/laravel-language",
+            "options": {
+                "symlink": false
+            }
+        },
         {
             "type": "path",
             "url": "packages/laravel-mutable-observer",
