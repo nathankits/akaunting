@@ -65,7 +65,7 @@
         "mnsami/composer-custom-directory-installer": "^2.2",
         "plank/laravel-mediable": "^7.0",
         "riverskies/laravel-mobile-detect": "^1.3",
-        "santigarcor/laratrust": "^8.5",
+        "santigarcor/laratrust": "*",
         "sentry/sentry-laravel": "^4.27",
         "simple-icons/simple-icons": "^16.29",
         "simshaun/recurr": "^6.0",
@@ -161,6 +161,13 @@
         ]
     },
     "repositories": [
+        {
+            "type": "path",
+            "url": "packages/laratrust",
+            "options": {
+                "symlink": false
+            }
+        },
         {
             "type": "path",
             "url": "packages/laravel-language",

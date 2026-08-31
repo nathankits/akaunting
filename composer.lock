@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5e476da57d8c70e9a33393c07a98f5e",
+    "content-hash": "e5e82481476d25cc6a91e87e1fb4a198",
     "packages": [
         {
             "name": "akaunting/laravel-apexcharts",
@@ -9373,17 +9373,11 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "8.5.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "d38d1e00e388e559252136277e264b9cecfa6586"
-            },
+            "version": "99.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/d38d1e00e388e559252136277e264b9cecfa6586",
-                "reference": "d38d1e00e388e559252136277e264b9cecfa6586",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/laratrust",
+                "reference": "82465cddb45f0a22f1cc0e2f6adbb43ff503ebd7"
             },
             "require": {
                 "kkszymanowski/traitor": "^1.0",
@@ -9398,12 +9392,12 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "aliases": {
-                        "Laratrust": "Laratrust\\LaratrustFacade"
-                    },
                     "providers": [
                         "Laratrust\\LaratrustServiceProvider"
-                    ]
+                    ],
+                    "aliases": {
+                        "Laratrust": "Laratrust\\LaratrustFacade"
+                    }
                 }
             },
             "autoload": {
@@ -9411,7 +9405,11 @@
                     "Laratrust\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Laratrust\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -9423,7 +9421,6 @@
             ],
             "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
             "keywords": [
-                "Teams",
                 "acl",
                 "authorization",
                 "laratrust",
@@ -9432,19 +9429,13 @@
                 "permissions",
                 "php",
                 "rbac",
-                "roles"
+                "roles",
+                "teams"
             ],
-            "support": {
-                "issues": "https://github.com/santigarcor/laratrust/issues",
-                "source": "https://github.com/santigarcor/laratrust/tree/8.5.5"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/santigarcor",
-                    "type": "github"
-                }
-            ],
-            "time": "2026-03-06T14:10:22+00:00"
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
         },
         {
             "name": "sentry/sentry",

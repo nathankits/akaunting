@@ -16,12 +16,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laratrust\Contracts\LaratrustUser;
 use Laratrust\Traits\HasLaratrustScopes;
 use Laratrust\Traits\HasRolesAndPermissions;
 use Lorisleiva\LaravelSearchString\Concerns\SearchString;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class User extends Authenticatable implements HasLocalePreference
+class User extends Authenticatable implements HasLocalePreference, LaratrustUser
 {
     use HasApiTokens, HasFactory, HasRelationships, HasLaratrustScopes, HasRolesAndPermissions, Media, Notifiable, Owners, SearchString, SoftDeletes, Sortable, Sources, Tenants, Users;
 
@@ -94,7 +96,7 @@ class User extends Authenticatable implements HasLocalePreference
         return $this->hasOne('App\Models\Auth\UserInvitation', 'user_id', 'id');
     }
 
-    public function roles()
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(role_model_class(), 'App\Models\Auth\UserRole');
     }
